@@ -37,6 +37,9 @@ export class Stick {
         }
         graphics.moveTo(this.p0.x, this.p0.y)
         graphics.lineTo(this.p1.x, this.p1.y)
+
+        graphics.stroke()
+        graphics.fill()
     }
 
     private distance(pointA: Point, pointB: Point) {

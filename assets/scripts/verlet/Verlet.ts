@@ -49,23 +49,23 @@ export class Verlet extends Component {
             false
         ))
 
-        this.sticks.push(new Stick(
+        this.addStick(new Stick(
             this.points[0],
             this.points[1],
         ))
-        this.sticks.push(new Stick(
+        this.addStick(new Stick(
             this.points[1],
             this.points[2],
         ))
-        this.sticks.push(new Stick(
+        this.addStick(new Stick(
             this.points[2],
             this.points[3],
         ))
-        this.sticks.push(new Stick(
+        this.addStick(new Stick(
             this.points[3],
             this.points[0],
         ))
-        this.sticks.push(new Stick(
+        this.addStick(new Stick(
             this.points[0],
             this.points[2],
             true
@@ -79,10 +79,12 @@ export class Verlet extends Component {
             this.constrinPoints()
         }
         this.graphics.clear()
-        this.renderPoints()
         this.renderSticks()
-        this.graphics.stroke()
-        this.graphics.fill()
+        this.renderPoints()
+    }
+
+    addStick(stick: Stick) {
+        this.sticks.push(stick)
     }
 
     updatePoints() {

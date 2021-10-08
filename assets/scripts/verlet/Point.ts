@@ -1,4 +1,4 @@
-import { Graphics, view } from "cc"
+import { Color, Graphics, v2, Vec2, view } from "cc"
 
 export class Point {
     constructor(
@@ -6,7 +6,8 @@ export class Point {
         public y: number,
         public oldx: number,
         public oldy: number,
-        public locked: boolean = false
+        public locked: boolean = false,
+        public color: Color = Color.WHITE
     ) { }
 
     update(friction: number, gravity: number) {
@@ -49,6 +50,17 @@ export class Point {
     }
 
     render(graphics: Graphics) {
+        let graphicsInitialColor: Color = graphics.fillColor
+
+        graphics.fillColor = this.color
         graphics.circle(this.x, this.y, 5)
+        graphics.stroke()
+        graphics.fill()
+
+        graphics.fillColor = graphicsInitialColor
+    }
+
+    getLocation(): Vec2 {
+        return v2(this.x, this.y)
     }
 }
